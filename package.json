@@ -1,0 +1,29 @@
+{
+  "name": "electron-doll",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "element-plus": "^2.3.6",
+    "normalize.css": "^8.0.1",
+    "sharp": "^0.32.1",
+    "vue": "^3.2.47",
+    "vue-router": "^4.2.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.2",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "electron": "^24.4.0",
+    "electron-builder": "^23.6.0",
+    "sass": "^1.63.6",
+    "vite": "^4.3.2",
+    "vite-plugin-electron": "^0.11.2",
+    "vite-plugin-electron-renderer": "^0.14.5"
+  },
+  "main": "dist-electron/main.js"
+}
