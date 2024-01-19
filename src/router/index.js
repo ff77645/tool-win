@@ -1,18 +1,27 @@
 import {createRouter,createWebHistory} from 'vue-router'
-import Home from '@/views/home.vue'
-
+import Main from '@/views/Main/index.vue'
 const routes = [
     {
         path:'/',
-        component:Home
+        component:Main,
     },
     {
-        path:'/random-number',
-        component:()=>import('@/views/random-number.vue')
+        path:'/image',
+        children:[
+            {
+                path:'compress',
+                component:()=>import('@/views/Image/Compress/index.vue')
+            }
+        ]
     },
     {
-        path:'/img-compress',
-        component:()=>import('@/views/img-compress/index.vue')
+        path:'/video',
+        children:[
+            {
+                path:'manage',
+                component:()=>import('@/views/Video/Manage/index.vue')
+            }
+        ]
     }
 ]
 
