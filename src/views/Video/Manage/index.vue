@@ -3,6 +3,23 @@
     <PageHeader @back="onBack" class="p-5 flex-none">
       <template #content>视频管理</template>
     </PageHeader>
+    <div class="flex p-3 justify-between">
+      <div class=""></div>
+      <div class="flex flex-nowrap items-center">
+        <el-select
+          v-model="layout.row"
+          size="small"
+          style="width: 50px"
+        >
+          <el-option
+            v-for="i in 10"
+            :key="i"
+            :label="i"
+            :value="i"
+          />
+        </el-select>
+      </div>
+    </div>
     <div 
       class="flex-1 grid overflow-hidden p-3" 
       ref="videoWrapRef"
@@ -35,43 +52,18 @@ const onBack = ()=>{
   console.log('onBack');
 }
 const videoWrapRef = ref(null)
-const videoList = ref([
-  
-])
+const videoList = ref([])
+const layout = reactive({
+  col:1,
+  row:1,
+})
 
 const onAdd = ()=>{
   videoList.value.push({
     name:videoList.value.length+1
   })
 }
-let wrapReact = reactive({
-  width:100,
-  height:100,
-})
-const getWrapSize = ()=>{
-  const {width,height} = videoWrapRef.value.getBoundingClientRect()
-  wrapReact.width = width - 24
-  wrapReact.height = height - 24
-}
-onMounted(()=>{
-  getWrapSize()
-})
 
-const getCols = (col,row=1) =>{
-  if(col === 1 && row == 1) return 2
-  const width = (wrapReact.width - (col - 1) * 10) / col
-  const height = (wrapReact.height - (row - 1) * 10) / row
-  if(width > height) return col
-  return getCols(Math.ceil(col / 2),row+1)
-}
-
-const gridStyle = computed(()=>{
-  const col = getCols(videoList.value.length)
-  return {
-    gap:'10px',
-    gridTemplateColumns:`repeat(${col}, 1fr)`
-  }
-})
 
 </script>
 <style lang="scss">
