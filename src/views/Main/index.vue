@@ -37,7 +37,7 @@ const imageMenu = [
 ]
 const videoMenu = [
   {
-    name:'视频管理',
+    name:'视频播放',
     path:'/video/manage'
   }
 ]
